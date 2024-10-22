@@ -27,18 +27,18 @@ function LoginPage() {
                 <form id = 'FormLogin' method = 'post' onSubmit = {loginSubmit}>
                     <input
                         ref = {inputLoginRef}
-                        id = 'InputLogin'
+                        className = 'InputField'
                         type = 'Text'
                         placeholder = 'Input your Login'
                         onKeyDown = {finishedEdittingLogin}
                     />
                     <input
                         ref = {inputPasswordRef}
-                        id = 'InputPassword'
+                        className = 'InputField'
                         type = 'password'
                         placeholder = 'Input your Password'
                     />
-                    <button>Entrar</button>
+                    <button id = 'LoginButton'>Entrar</button>
                 </form>
             </div>
         </div>

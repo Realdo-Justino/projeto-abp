@@ -14,13 +14,23 @@ body {
   flex-direction: column;
   background-color: white;
   width: 400px;
+  border-radius: 10px;
   margin: 5px auto;
+}
+
+.InputField {
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
 #FormLogin {
   margin: 0;
   align-items: center;
-  align-content: center;
   display: flex;
   flex-direction: column;
+}
+
+#LoginButton {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
