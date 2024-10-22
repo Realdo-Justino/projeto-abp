@@ -11,13 +11,16 @@ body {
 
 .LoginForm {
   display: flex;
+  flex-direction: column;
   background-color: white;
-  max-width: 500px;
-  min-width: 100px;
-  min-height: 10px;
+  width: 400px;
   margin: 5px auto;
 }
 
-.LoginTitle {
-  padding: 25px 50px 25px 50px;
+#FormLogin {
+  margin: 0;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
 }

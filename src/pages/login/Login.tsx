@@ -21,29 +21,25 @@ function LoginPage() {
     return (
         <div className = 'MainPage'>
             <div className = "LoginForm">
-                <div className = 'LoginTitle'>
-                    <header>
-                        <h1>Login</h1>
-                    </header>
-                </div>
-                <div className = 'LoginBody'>
-                    <form id = 'InputLogin' method = 'post' onSubmit = {loginSubmit}>
-                        <input
-                            ref = {inputLoginRef}
-                            id = 'inputUser'
-                            type = 'Text'
-                            placeholder = 'Input your Login'
-                            onKeyDown = {finishedEdittingLogin}
-                        />
-                        <input
-                            ref = {inputPasswordRef}
-                            id = 'inputPassword'
-                            type = 'password'
-                            placeholder = 'Input your Password'
-                        />
-                        <button>Login</button>
-                    </form>
-                </div>
+                <header>
+                    <h1>Login</h1>
+                </header>
+                <form id = 'FormLogin' method = 'post' onSubmit = {loginSubmit}>
+                    <input
+                        ref = {inputLoginRef}
+                        id = 'InputLogin'
+                        type = 'Text'
+                        placeholder = 'Input your Login'
+                        onKeyDown = {finishedEdittingLogin}
+                    />
+                    <input
+                        ref = {inputPasswordRef}
+                        id = 'InputPassword'
+                        type = 'password'
+                        placeholder = 'Input your Password'
+                    />
+                    <button>Entrar</button>
+                </form>
             </div>
         </div>
     )
