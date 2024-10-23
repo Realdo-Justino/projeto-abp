@@ -1,5 +1,5 @@
 function isEmpthyText(txt : string|undefined) : boolean {
-    if(txt == undefined) return true;
+    if(txt === undefined) return true;
 
     let formatedtxt : string = txt.replaceAll(/\s/g,'');
 

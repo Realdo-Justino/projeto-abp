@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Methods from '../../const/methods';
 import './Login.css';
 
 function LoginPage() {
+    const navigate = useNavigate();
     const inputLoginRef = useRef<HTMLInputElement|null>(null);
     const inputPasswordRef = useRef<HTMLInputElement|null>(null);
 
@@ -31,7 +33,10 @@ function LoginPage() {
 
 
         if((loginText  === 'test')||(passwordText === '1234')) {
-            console.log('Go to the next the next screen');
+            navigate('/chat');
+        } else {
+            alert('Login/Senha Invalidos');
+            return;
         }
     }
 

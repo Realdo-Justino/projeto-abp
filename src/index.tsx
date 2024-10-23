@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
+import Chat from './pages/chat/Chat';
+
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +12,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Login/>
+    <BrowserRouter>
+      <Routes>
+          <Route path = '/' element = {<Login/>}/>
+          <Route path = 'chat' element = {<Chat/>}/>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
