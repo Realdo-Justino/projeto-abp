@@ -16,11 +16,11 @@ function LoginPage() {
     const loginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        let loginText : string|undefined = inputLoginRef.current?.value;            alert('Campo de login Vazio');
-        let passwordText : string|undefined = inputPasswordRef.current?.value;            alert('Campo de login Vazio');
+        let loginText : string|undefined = inputLoginRef.current?.value;
+        let passwordText : string|undefined = inputPasswordRef.current?.value;
 
 
-        if(Methods.isEmpthyText(loginText)) {
+        if(Methods.isEmpthyText(inputLoginRef.current?.value)) {
             alert('Campo de login Vazio');
             return;
         }
