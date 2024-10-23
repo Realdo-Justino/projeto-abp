@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Methods from '../../const/methods';
+import { User } from '../../classes/user';
 import './Login.css';
 
 function LoginPage() {
@@ -32,7 +33,7 @@ function LoginPage() {
         }
 
 
-        if((loginText  === 'test')||(passwordText === '1234')) {
+        if(_isUserValid(new User({login: loginText, password: passwordText}))) {
             navigate('/chat');
         } else {
             alert('Login/Senha Invalidos');
@@ -67,4 +68,10 @@ function LoginPage() {
     )
 }
 
+
 export default LoginPage;
+
+
+function _isUserValid(user : User) : boolean {
+    return (user.login === 'test')&&(user.password === '1234')
+}
