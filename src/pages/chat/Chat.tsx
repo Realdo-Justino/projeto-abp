@@ -1,48 +1,27 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Methods from '../../const/methods';
+import Message from './components/message/message';
 
-function Chat() {
+function Chat() : JSX.Element {
     const inputMessageRef = useRef<HTMLInputElement|null>(null);
+    const [messages, setMessages] = useState<string[]>([]);
 
     const messageSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         let messageText : string|undefined = inputMessageRef.current?.value;
 
-        if(Methods.isEmpthyText(messageText)) {
-            return;
-        }
+        if(Methods.isEmpthyText(messageText)) return;
 
-        console.log(messageText);
+        setMessages(prevMessages => [...prevMessages, messageText!]);
+        inputMessageRef.current!.value = '';
     }
-// const [mensagem, setMensagem] = useState('');
-// const [mensagens, setMensagens] = useState([]);
-
-// const adicionaItem = () => {
-//     if (mensagem.trim()) {
-//         setMensagens([...mensagens, mensagem]);
-//         setMensagem('');
-//     }
-// }
-
-// const handleSubmit = (event : {
-//         preventDefault: () => void
-//         }) =>{
-//                 event.preventDefault();
-//                 adicionaItem()
-//                 }
 
     return (
         <div className="chat-container">
             <div className="lista">
-                {/* {
-                    mensagens.map((msg, index) => (
-                        <div key={index} className="mensagem">
-                            <h3 className="voce">Você:</h3>
-                            <p className="mensagens">{msg}</p>
-                        </div>
-                    ))
-                } */}
+                {messages.map((message, id) => (Message(id, message)))}
             </div>
-
             <form id="formItem" onSubmit={messageSubmit}>
                 <input
                     ref = {inputMessageRef}
@@ -52,7 +31,7 @@ function Chat() {
                 <button className="botao" type="submit">Enviar</button>
             </form>
         </div>
-    )
+    );
 }
 
 export default Chat;
