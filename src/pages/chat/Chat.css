@@ -1,3 +1,10 @@
+#userInputForm {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #e5ddd5;
+    background-color: #ffffff;
+}
+
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -7,41 +14,18 @@
     border-radius: 10px;
     overflow: hidden;
     font-family: Arial, sans-serif;
-    background-color: #e5ddd5;}
+    background-color: #e5ddd5;
+}
 
-.lista {
+.list {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    background-color: #dcf8c6;}
+    background-color: #dcf8c6;
+}
 
-.mensagem {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 8px 0;
-    padding: 8px 12px;
-    max-width: 70%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);}
 
-.voce {
-    font-size: 12px;
-    color: #128c7e;
-    margin-bottom: 4px;}
-
-.mensagens {
-    font-size: 14px;
-    color: #333;}
-
-#formItem {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #e5ddd5;
-    background-color: #ffffff;}
-
-.Digitavel {
+.userInput {
     flex: 1;
     padding: 10px;
     font-size: 14px;
@@ -49,12 +33,14 @@
     border-radius: 20px;
     outline: none;
     background-color: #f0f0f0;
-    color: #333;}
+    color: #333;
+}
 
-.Digitavel:focus {
-    border-color: #34b7f1;}
+.userInput:focus {
+    border-color: #34b7f1;
+}
 
-.botao {
+.inputMessage {
     margin-left: 10px;
     padding: 8px 15px;
     font-size: 14px;
@@ -63,7 +49,9 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s;}
+    transition: background-color 0.3s;
+}
 
-.botao:hover {
-    background-color: #075e54;}
+.inputMessage:hover {
+    background-color: #075e54;
+}

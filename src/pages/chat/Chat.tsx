@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Methods from '../../const/methods';
 import Message from './components/message/message';
+import './Chat.css';
 
 function Chat() : JSX.Element {
     const inputMessageRef = useRef<HTMLInputElement|null>(null);
@@ -18,17 +19,17 @@ function Chat() : JSX.Element {
     }
 
     return (
-        <div className="chat-container">
-            <div className="lista">
+        <div className = "chat-container">
+            <div className = "list">
                 {messages.map((message, id) => (Message(id, message)))}
             </div>
-            <form id="formItem" onSubmit={messageSubmit}>
+            <form id = "userInputForm" onSubmit = {messageSubmit}>
                 <input
                     ref = {inputMessageRef}
-                    className="Digitavel"
-                    placeholder="Digite sua mensagem..."
+                    className = "userInput"
+                    placeholder = "Digite sua mensagem..."
                 />
-                <button className="botao" type="submit">Enviar</button>
+                <button className = "inputMessage" type = "submit">Enviar</button>
             </form>
         </div>
     );
