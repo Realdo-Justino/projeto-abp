@@ -1,8 +1,8 @@
 #userInputForm {
     display: flex;
     padding: 10px;
-    border-top: 1px solid #e5ddd5;
-    background-color: #ffffff;
+    border-top: 1px solid #000000;
+    background-color: #888888;
 }
 
 .chat-container {
@@ -10,18 +10,18 @@
     flex-direction: column;
     width: 400px;
     height: 600px;
-    border: 1px solid #e5ddd5;
+    border: 1px solid #181818;
     border-radius: 10px;
     overflow: hidden;
     font-family: Arial, sans-serif;
-    background-color: #e5ddd5;
+    background-color: #696969;
 }
 
 .list {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    background-color: #dcf8c6;
+    background-color: #000000bb;
 }
 
 
@@ -29,10 +29,10 @@
     flex: 1;
     padding: 10px;
     font-size: 14px;
-    border: 1px solid #e5ddd5;
-    border-radius: 20px;
+    border: 1px solid #000000;
+    border-radius:6px;
     outline: none;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     color: #333;
 }
 
@@ -44,14 +44,15 @@
     margin-left: 10px;
     padding: 8px 15px;
     font-size: 14px;
-    color: #fff;
-    background-color: #128c7e;
+    color: #ffffff;
+    background-color: #0714c0c4;
     border: none;
-    border-radius: 50%;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .inputMessage:hover {
-    background-color: #075e54;
+    background-color: #0059ffbb;
 }
+
