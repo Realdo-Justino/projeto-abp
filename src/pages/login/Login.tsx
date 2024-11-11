@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Methods from '../../const/methods';
 import { User } from '../../classes/user';
+import Methods from '../../const/methods';
 import './Login.css';
 
-function LoginPage() {
+function LoginPage() : JSX.Element {
     const navigate = useNavigate();
     const inputLoginRef = useRef<HTMLInputElement|null>(null);
     const inputPasswordRef = useRef<HTMLInputElement|null>(null);
@@ -23,7 +23,7 @@ function LoginPage() {
         let passwordText : string|undefined = inputPasswordRef.current?.value;
 
 
-        if(Methods.isEmpthyText(inputLoginRef.current?.value)) {
+        if(Methods.isEmpthyText(loginText)) {
             alert('Campo de login Vazio');
             return;
         }
@@ -65,7 +65,7 @@ function LoginPage() {
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
 
