@@ -1,4 +1,4 @@
-Equipe:Augusto Franciosco, Jean, Jorge Pire, Realdo Justino, Rafael Cechinel.
+Equipe:Augusto Franciosco, Jean, Jorge Pires, Realdo Justino, Rafael Cechinel.
 
 Iremos desenvolver o ABP em React.
 
