@@ -9,10 +9,11 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #181818;
-    border-radius: 10px;
     overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #696969;
+    width: 99vw;
+    height: 100vh;
 }
 
 .list {

@@ -35,24 +35,22 @@ function Chat() : JSX.Element {
     }
 
     return (
-        <div>
-            <div className="chat-container">
-                <div ref={chatRef} className="list">
-                    {messages.map((message, id) => (Message(id, message)))}
-                </div>
-                <form id="userInputForm" onSubmit={messageSubmit}>
-                    <input
-                        ref={inputMessageRef}
-                        className="userInput"
-                        placeholder="Digite sua mensagem..."
-                    />
-                    <button className="inputMessage" type="submit">Enviar</button>
-                </form>
-                {/* Botão para ir para a tela de Contatos */}
-                <button className="go-to-contatos" onClick={goToContatos}>
-                    Ver Contatos
-                </button>
+        <div className="chat-container">
+            <div ref={chatRef} className="list">
+                {messages.map((message, id) => (Message(id, message)))}
             </div>
+            <form id="userInputForm" onSubmit={messageSubmit}>
+                <input
+                    ref={inputMessageRef}
+                    className="userInput"
+                    placeholder="Digite sua mensagem..."
+                />
+                <button className="inputMessage" type="submit">Enviar</button>
+            </form>
+            {/* Botão para ir para a tela de Contatos */}
+            <button className="go-to-contatos" onClick={goToContatos}>
+                Ver Contatos
+            </button>
         </div>
     );
 }
