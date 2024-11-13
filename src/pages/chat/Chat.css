@@ -56,3 +56,19 @@
     background-color: #0059ffbb;
 }
 
+.go-back-chat {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #34b7f1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.go-back-chat:hover {
+    background-color: #007bff;
+}
+
