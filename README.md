@@ -1,4 +1,5 @@
 Equipe:Augusto Franciosco, Jean, Jorge Pire, Realdo Justino, Rafael Cechinel.
+
 Iremos desenvolver o ABP em React.
 
 # Projeto: ChatNow
