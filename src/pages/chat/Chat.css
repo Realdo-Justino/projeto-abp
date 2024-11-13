@@ -2,6 +2,15 @@
     display: flex;
     padding: 10px;
     border-top: 1px solid #000000;
+    background-color: #b8b8b8;
+}
+
+.container {
+    display: flex;
+}
+
+.side-bar {
+    width: 20%;
     background-color: #888888;
 }
 
@@ -12,7 +21,7 @@
     overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #696969;
-    width: 99vw;
+    width: 80%;
     height: 100vh;
 }
 
