@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Contato.css';
 
-const Contato = ({ onBack }: { onBack: () => void }) => {
+function Contato() : JSX.Element {
+  const navigate = useNavigate();
 
   const [novoContato, setNovoContato] = useState('');
 
@@ -15,16 +17,20 @@ const Contato = ({ onBack }: { onBack: () => void }) => {
   // Função para adicionar um novo contato
   const handleAdicionarContato = () => {
     if (novoContato.trim()) {
-      const novoContatoObj = { 
-        id: contatos.length + 1, 
-        nome: novoContato, 
-        avatar: 'https://randomuser.me/api/portraits/men/3.jpg' 
+      const novoContatoObj = {
+        id: contatos.length + 1,
+        nome: novoContato,
+        avatar: 'https://randomuser.me/api/portraits/men/3.jpg'
       };
       // Atualizando a lista de contatos de forma imutável
       setContatos([...contatos, novoContatoObj]);
       setNovoContato('');  // Limpar o campo de entrada após adicionar
     }
-  };
+  }
+
+  const goToChat = () => {
+      navigate('/chat')
+  }
 
   return (
     <div className="contatos-container">
@@ -51,7 +57,7 @@ const Contato = ({ onBack }: { onBack: () => void }) => {
       </div>
 
       {/* Botão para voltar para o Chat */}
-      <button className="go-back-chat" onClick={onBack}>
+      <button className="go-back-chat" onClick={goToChat}>
         Voltar para o Chat
       </button>
     </div>

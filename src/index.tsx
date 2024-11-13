@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Chat from './pages/chat/Chat';
+import Contato from './pages/contato/Contato';
 
 import './index.css';
 
@@ -16,6 +17,7 @@ root.render(
       <Routes>
           <Route path = '/' element = {<Login/>}/>
           <Route path = 'chat' element = {<Chat/>}/>
+          <Route path = 'contato' element = {<Contato/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -3,17 +3,20 @@
     flex-direction: column;
     justify-content: end;
     align-items: flex-end ;
+    text-align: left;
     margin: 8px 0;
     padding: 8px 12px;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
+    max-width: 60%;
 }
 
 .messages {
     font-size: 14px;
     color: #000000;
+    word-break: break-word;
+    white-space: normal;
 }
 
 .userMessage {
@@ -21,8 +24,10 @@
     color: #0fa534;
     margin-bottom: 4px;
 }
+
 .messagesscss{
     display: flex;
     justify-content: end;
     align-items: end;
+    margin-right: 5px;
 }

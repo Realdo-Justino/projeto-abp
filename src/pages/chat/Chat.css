@@ -2,19 +2,27 @@
     display: flex;
     padding: 10px;
     border-top: 1px solid #000000;
+    background-color: #b8b8b8;
+}
+
+.container {
+    display: flex;
+}
+
+.side-bar {
+    width: 20%;
     background-color: #888888;
 }
 
 .chat-container {
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 600px;
     border: 1px solid #181818;
-    border-radius: 10px;
     overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #696969;
+    width: 80%;
+    height: 100vh;
 }
 
 .list {
