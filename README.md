@@ -1,3 +1,6 @@
+Equipe:Augusto Franciosco, Jean, Jorge Pire, Realdo Justino, Rafael Cechinel.
+Iremos desenvolver o ABP em React.
+
 # Projeto: ChatNow
 
 O Projeto "ChatNow" tem como objetivo ser um site de bate-papo similar a outros como whatsapp ou telegram.
