@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Member } from '../../classes/member';
-import './index.css';
+import './grupo.css';
 
 
 function App() {
     const [groupName, setGroupName] = useState<string>('');
     const [groupDescription, setGroupDescription] = useState<string>('');
-    const [groupImage, setGroupImage] = useState(null);
+    const [groupImage, setGroupImage] = useState<File|null>(null);
     const [selectedMembers, setSelectedMembers] = useState<Array<Member>>([]);
 
     const members : Array<Member> = [
@@ -16,8 +16,8 @@ function App() {
         new Member({id: 4, name:'Usuário 4'}),
     ];
 
-    const handleSubmit = (event: { preventDefault: () => void }) => {
-        event.preventDefault();
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
         // const groupInfo = {
         //     name: groupName,
@@ -34,10 +34,20 @@ function App() {
         setSelectedMembers([]);
     };
 
-    const handleMemberChange = (event: { target: { selectedOptions: Iterable<unknown> | ArrayLike<unknown>; }; }) => {
-        const value = Array.from(event.target.selectedOptions, (option) => option.value);
-        setSelectedMembers(value);
-    };
+    const changeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files !== null) {
+            setGroupImage(e.target.files[0]);
+        }
+    }
+
+    const handleMemberChanger = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedId: number = parseInt(e.target.value, 10);
+        const temMember: Member|undefined = members.find((m) => m.id === selectedId);
+
+        if (temMember !== undefined) {
+            setSelectedMembers([temMember]);
+        }
+    }
 
     return (
         <div className="container">
@@ -68,16 +78,16 @@ function App() {
                 type="file"
                 id="groupImage"
                 accept="image/*"
-                onChange={(e) => setGroupImage(e.target.files[0])}
+                onChange={changeImage}
             />
             </div>
             <div className="form-group">
             <label>Membros:</label>
-            <select id="membersSelect" multiple onChange={handleMemberChange}>
+            <select id="membersSelect" multiple onChange={handleMemberChanger}>
                 {members.map((member) => (
-                <option key={member.id} value={member.name}>
-                    {member.name}
-                </option>
+                    <option key={member.id} value={member.name}>
+                        {member.name}
+                    </option>
                 ))}
             </select>
             </div>
