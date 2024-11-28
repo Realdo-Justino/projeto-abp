@@ -13,7 +13,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;}
+    max-width: 900px;}
 
     .container h1 {
     text-align: center;
@@ -67,7 +67,7 @@ button[type="submit"]:hover {
     input[type="file"] {
     padding: 5px; }
 
-    @media (max-width: 480px) {
+    @media (max-width: 980px) {
     .container {
     padding: 15px;}
 
@@ -75,3 +75,22 @@ button[type="submit"]:hover {
     font-size: 14px;
     padding: 8px;
     }}
+    .backchat {
+        background-color: #0714c0c4;
+        display: flex;
+        color: #ffffff;
+        padding: 10px 15px;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 150px; 
+        height: max-content; 
+        transition: background-color 0.3s ease;
+        border: #000000 5px;
+        text-align: center;
+        position: relative; 
+        left: px; 
+        top: 382px; 
+        margin: 0 auto; 
+    }
+    

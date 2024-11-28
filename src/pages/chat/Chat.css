@@ -21,7 +21,7 @@
     overflow: hidden;
     font-family: Arial, sans-serif;
     background-color: #696969;
-    width: 80%;
+    width: 1100%;
     height: 100vh;
 }
 
@@ -79,4 +79,67 @@
 .go-back-chat:hover {
     background-color: #007bff;
 }
+.go-to-grupo{.container {  
+    display: flex;  
+    height: 100vh; 
+}  
 
+.side-bar {  
+    width: 20%; 
+    background-color: #f0f0f0; 
+    padding: 20px;  
+}  
+
+.chat-container {  
+    width: 80%; 
+    display: flex;  
+    flex-direction: column;  
+}  
+
+.list {  
+    flex-grow: 1; 
+    overflow-y: auto; 
+    background-color: #ffffff;   
+    padding: 10px;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;   
+}  
+
+.userInput {  
+    width: calc(100% - 100px); 
+    padding: 10px;  
+    margin-right: 10px;   
+    border: 1px solid #ccc;  
+    border-radius: 5px;   
+}  
+
+.inputMessage {  
+    padding: 10px 15px; 
+    background-color: #007bff;
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}  
+
+.inputMessage:hover {  
+    background-color: #0056b3; 
+}  
+
+.go-to-contatos, .go-to-grupo {  
+    margin-top: 10px; 
+    padding: 8px 15px; 
+    background-color: #28a745;  
+    color: rgb(255, 255, 255); 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;  
+    transition: background-color 0.3s ease;
+}  
+
+
+
+.go-to-grupo:hover {  
+    background-color: #000000;
+}}
