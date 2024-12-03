@@ -5,7 +5,7 @@ import './Contato.css';
 function Contato() : JSX.Element {
   const navigate = useNavigate();
 
-  const [novoContato, setNovoContato] = useState('');
+  const [novoContato, setNovoContato] = useState<string>('');
 
   // Lista de contatos fictícios
   const [contatos, setContatos] = useState([
