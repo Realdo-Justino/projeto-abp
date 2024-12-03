@@ -49,18 +49,18 @@ function App() {
             <form onSubmit={handleSubmit}>
 
                 <div className="form-group">
-                    <label htmlFor="groupName">Nome do Grupo:</label>
+                    <label >Nome do Grupo:</label>
                     <input
                         type="text"
                         id="groupName"
                         value={groupName}
                         onChange={(e) => setGroupName(e.target.value)}
-                        required
+                        required={true}
                     />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="groupDescription">Descrição:</label>
+                    <label>Descrição:</label>
                     <textarea
                         id="groupDescription"
                         value={groupDescription}
@@ -69,7 +69,7 @@ function App() {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="groupImage">Imagem do Grupo:</label>
+                    <label>Imagem do Grupo:</label>
                     <input
                         type="file"
                         id="groupImage"
@@ -89,9 +89,10 @@ function App() {
                     </select>
                 </div>
 
-                <button type="submit">Criar Grupo</button>
+                <button type="submit" className="button group-button">Criar Grupo</button>
             </form>
-            <button className="backchat" onClick={handleBackToChat}>Voltar para Chat</button>
+
+            <button className="button back-chat" onClick={handleBackToChat}>Voltar para Chat</button>
         </div>
     );
 }

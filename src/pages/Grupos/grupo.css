@@ -1,9 +1,27 @@
+@media (max-width: 980px) {
+    .container {
+        padding: 15px;
+    }
+
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+
+input[type="file"] {
+    padding: 5px;
+}
+
+
 .body-page {
     background: #888888;
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
+    height: 100vh;
     max-width: 900px;
 }
 
@@ -39,22 +57,6 @@
     min-height: 80px;
 }
 
-button[type="submit"] {
-    background-color: #0714c0c4;
-    color: #ffffff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #0059ffbb;
-}
-
 .form-group select[multiple] {
     height: 100px;
     background-color: #000000bb;
@@ -62,32 +64,28 @@ button[type="submit"]:hover {
     border: 1px solid #181818;
 }
 
-input[type="file"] {
-    padding: 5px;
-}
-
-@media (max-width: 980px) {
-    .container {
-        padding: 15px;
-    }
-
-    button[type="submit"] {
-        font-size: 14px;
-        padding: 8px;
-    }
-}
-
-.backchat {
+.button {
     background-color: #0714c0c4;
-    display: flex;
     color: #ffffff;
     padding: 10px 15px;
+    border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.group-button {
+    width: 100%;
+}
+
+.group-button :hover {
+    background-color: #0059ffbb;
+}
+
+.back-chat {
     width: 150px;
     height: max-content;
-    transition: background-color 0.3s ease;
     border: #000000 5px;
     text-align: center;
     position: relative;
