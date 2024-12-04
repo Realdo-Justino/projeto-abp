@@ -6,6 +6,8 @@ import { useMemoryContext } from '../../memory/memory';
 import './Chat.css';
 import Conversation from './components/conversation/conversation';
 import ContactTitle from './components/title/title';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function Chat() : JSX.Element {
     const navigate = useNavigate();
@@ -53,9 +55,14 @@ function Chat() : JSX.Element {
     return (
         <div className='container'>
             <div className="side-bar">
+                <h1>Conversas</h1>
                 {contacts.map((currentContact) => (
                     Conversation(currentContact, focusOnContactById)
                 ))}
+                <div className='empthyBox' />
+                <button className='floatingButton' onClick={goToContatos}>
+                    <FontAwesomeIcon icon={faPlus} />
+                </button>
             </div>
             <div className="chat-container">
                 <div className='title'>
@@ -74,10 +81,6 @@ function Chat() : JSX.Element {
                         />
                     <button className="inputMessage" type="submit">Enviar</button>
                 </form>
-
-                <button className="go-to-contatos" onClick={goToContatos}>
-                    Ver Contatos
-                </button>
 
                 <button className="go-to-grupo" onClick={goToGrupo}>
                     Criar Grupo

@@ -10,13 +10,31 @@
 }
 
 .side-bar {
+    position: relative;
     width: 20%;
     background-color: #888888;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     overflow-y: auto;
     height: 100vh;
+}
+
+.floatingButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+.empthyBox {
+    height: 40px;
 }
 
 .title {
@@ -42,7 +60,6 @@
     overflow-y: auto;
     background-color: #000000bb;
 }
-
 
 .userInput {
     flex: 1;
