@@ -1,48 +1,17 @@
 /* Container principal da tela de contatos */
-.contacts-container {
-  display: flex;
+.contatos-container {
   flex-direction: column;
-  width: 400px;
-  height: 600px;
   border: 1px solid #181818;
   border-radius: 10px;
-  overflow: hidden;
   font-family: Arial, sans-serif;
   background-color: #696969;
 }
 
 /* Lista de contatos */
-.list {
-  flex: 1;
+.lista {
   padding: 10px;
   overflow-y: auto;
   background-color: #000000bb;
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.2s;
-}
-
-.contact-item:hover {
-  background-color: #eaeaea;
-}
-
-.contact-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.contact-name {
-  font-size: 16px;
-  font-weight: bold;
 }
 
 /* Formulário de entrada de novo contato */
@@ -124,5 +93,5 @@
   .inputMessage {
       width: 100%;
   }
-  
+
 }
