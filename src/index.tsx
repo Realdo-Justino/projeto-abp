@@ -5,6 +5,7 @@ import Login from './pages/login/Login';
 import Chat from './pages/chat/Chat';
 import Contato from './pages/contato/Contato';
 import Grupo from './pages/Grupos/grupo';
+import { MemoryProvider } from './memory/memory';
 
 import './index.css';
 
@@ -14,13 +15,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-          <Route path = '/' element = {<Login/>}/>
-          <Route path = 'chat' element = {<Chat/>}/>
-          <Route path = 'contato' element = {<Contato/>}/>
-          <Route path = 'grupo' element = {<Grupo/>}/>
-      </Routes>
-    </BrowserRouter>
+    <MemoryProvider>
+      <BrowserRouter>
+        <Routes>
+            <Route path = '/' element = {<Login/>}/>
+            <Route path = 'chat' element = {<Chat/>}/>
+            <Route path = 'contato' element = {<Contato/>}/>
+            <Route path = 'grupo' element = {<Grupo/>}/>
+        </Routes>
+      </BrowserRouter>
+    </MemoryProvider>
   </React.StrictMode>
 );
