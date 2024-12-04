@@ -1,10 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { Contact } from "../classes/contact";
+import { Contact } from '../classes/contact';
 
 type MemoryContactType = {
   contacts: Array<Contact>;
   addContact: (newContact: Contact) => void;
-  removeContact: (newContact: Contact) => void;
+  removeContact: (contactId: number) => void;
+  editContact: (contactId: number, name : string) => void;
 };
 
 type MemoryFocusedContact = {
@@ -35,10 +36,35 @@ export const MemoryProvider = ({ children }: { children: ReactNode }) => {
       setContacts((prevContacts) => [...prevContacts, newContact]);
     };
 
-    const removeContact = (newContact: Contact) => {
-      setContacts((prevContacts) => [...prevContacts]);
+    const removeContact = (contactId: number) => {
+      setContacts((prevContacts) => {
+        const newContacts: Array<Contact> = [];
+
+        for(let currentContact of prevContacts) {
+          if(currentContact.id !== contactId) {
+            newContacts.push(currentContact);
+          }
+        }
+
+        return newContacts;
+      });
     };
 
+    const editContact = (contactId: number, name : string) => {
+      setContacts((prevContacts) => {
+        const newContacts: Array<Contact> = [];
+
+        for(let currentContact of prevContacts) {
+          if(currentContact.id !== contactId) {
+            newContacts.push(currentContact);
+          } else {
+            newContacts.push(new Contact({id: contactId, name: name, avatar: currentContact.avatar}));
+          }
+        }
+
+        return newContacts;
+      });
+    };
 
     const [conversations, setConversations] = useState<Map<number, Array<string>>>(new Map<number, Array<string>>([
       [1,[]],
@@ -73,7 +99,7 @@ export const MemoryProvider = ({ children }: { children: ReactNode }) => {
 
     return (
       <MemoryContext.Provider value={{
-        contacts, addContact, removeContact,
+        contacts, addContact, removeContact, editContact,
         id, focusOnId,
         conversations, createConversation, addMessage
       }}>
