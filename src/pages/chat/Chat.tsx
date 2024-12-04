@@ -1,72 +1,84 @@
-import React, { useEffect, useRef, useState } from 'react';  
-import Methods from '../../const/methods';  
-import Message from './components/message/message';  
-import { useNavigate } from 'react-router-dom';  
-import './Chat.css';  
+import React, { useEffect, useRef, useState } from 'react';
+import Methods from '../../const/methods';
+import Message from './components/message/message';
+import { useNavigate } from 'react-router-dom';
+import { useMemoryContext } from '../../memory/memory';
+import './Chat.css';
+import Conversation from './components/conversation/conversation';
 
-function Chat() : JSX.Element {  
-    const navigate = useNavigate();  
+function Chat() : JSX.Element {
+    const navigate = useNavigate();
 
-    const inputMessageRef = useRef<HTMLInputElement|null>(null);  
-    const chatRef = useRef<HTMLDivElement|null>(null);  
+    const inputMessageRef = useRef<HTMLInputElement|null>(null);
+    const chatRef = useRef<HTMLDivElement|null>(null);
 
-    const [messages, setMessages] = useState<string[]>([]);  
+    // const [messages, setMessages] = useState<string[]>([]);
 
-    const messageSubmit = (e : React.FormEvent<HTMLFormElement>) => {  
-        e.preventDefault();  
+    const { contacts, addContact, removeContact } = useMemoryContext();
+    const { id, focusOnId } = useMemoryContext();
+    const { conversations, createConversation, addMessage } = useMemoryContext();
 
-        let messageText : string|undefined = inputMessageRef.current?.value;  
+    const messageSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
 
-        if(Methods.isEmpthyText(messageText)) return;  
+        let messageText : string|undefined = inputMessageRef.current?.value;
 
-        setMessages(prevMessages => [...prevMessages, messageText!]);  
-        inputMessageRef.current!.value = '';  
-        chatRef.current!.scrollTop = chatRef.current!.scrollHeight;  
-    }  
+        if(Methods.isEmpthyText(messageText)) return;
 
-    useEffect(() => {  
-        if (chatRef.current) {  
-            chatRef.current!.scrollTop = chatRef.current!.scrollHeight;  
-        }  
-    }, [messages]);  
+        addMessage(id, messageText!);
+        // setMessages(prevMessages => [...prevMessages, messageText!]);
+        inputMessageRef.current!.value = '';
+    }
 
-    const goToContatos = () => {  
-        navigate('/contato');  
-    }  
+    useEffect(() => {
+        if (chatRef.current) {
+            chatRef.current!.scrollTop = chatRef.current!.scrollHeight;
+        }
+    }, [conversations]);
 
-    const goToGrupo = () => {  
-        navigate('/grupo');  
-    }  
+    const focusOnContact = (e: React.MouseEvent<HTMLDivElement>, contactId: number) => {
+        focusOnId(contactId);
+    }
 
-    return (  
-        <div className='container'>  
-            <div className="side-bar">  
+    const goToContatos = () => {
+        navigate('/contato');
+    }
 
-            </div>  
-            <div className="chat-container">  
-                <div ref={chatRef} className="list">  
-                    {messages.map((message, id) => (Message(id, message)))}  
-                </div>  
+    const goToGrupo = () => {
+        navigate('/grupo');
+    }
 
-                <form id="userInputForm" onSubmit={messageSubmit}>  
-                    <input  
-                        ref={inputMessageRef}  
-                        className="userInput"  
-                        placeholder="Digite sua mensagem..."  
-                        />  
-                    <button className="inputMessage" type="submit">Enviar</button>  
-                </form>  
+    return (
+        <div className='container'>
+            <div className="side-bar">
+                {contacts.map((currentContact) => (
+                    Conversation(currentContact, focusOnContact)
+                ))}
+            </div>
+            <div className="chat-container">
+                <div ref={chatRef} className="list">
+                    {conversations.get(id)!.map((message, id) => (Message(id, message)))}
+                </div>
 
-                <button className="go-to-contatos" onClick={goToContatos}>  
-                    Ver Contatos  
-                </button>  
+                <form id="userInputForm" onSubmit={messageSubmit}>
+                    <input
+                        ref={inputMessageRef}
+                        className="userInput"
+                        placeholder="Digite sua mensagem..."
+                        />
+                    <button className="inputMessage" type="submit">Enviar</button>
+                </form>
 
-                <button className="go-to-grupo" onClick={goToGrupo}>  
-                    Criar Grupo  
-                </button>  
-            </div>  
-        </div>  
-    );  
-}  
+                <button className="go-to-contatos" onClick={goToContatos}>
+                    Ver Contatos
+                </button>
+
+                <button className="go-to-grupo" onClick={goToGrupo}>
+                    Criar Grupo
+                </button>
+            </div>
+        </div>
+    );
+}
 
 export default Chat;

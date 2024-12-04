@@ -1,59 +1,61 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMemoryContext } from '../../memory/memory';
 import './Contato.css';
+import Methods from '../../const/methods';
+import { Contact } from '../../classes/contact';
 
 function Contato(): JSX.Element {
   const navigate = useNavigate();
 
-  const [novoContato, setNovoContato] = useState<string>('');
+  const inputNameRef = useRef<HTMLInputElement|null>(null);
+  const contactsRef = useRef<HTMLDivElement|null>(null);
   const [busca, setBusca] = useState<string>('');
   const [menuAberto, setMenuAberto] = useState<number | null>(null);
-  const [contatos, setContatos] = useState([
-    { id: 1, nome: 'João Silva', avatar: 'https://ui-avatars.com/api/?name=João+Silva' },
-    { id: 2, nome: 'Maria Oliveira', avatar: 'https://ui-avatars.com/api/?name=Maria+Oliveira' },
-    { id: 3, nome: 'Pedro Souza', avatar: 'https://ui-avatars.com/api/?name=Pedro+Souza' },
-  ]);
 
-  const handleAdicionarContato = () => {
-    if (novoContato.trim()) {
-      const novoContatoObj = {
-        id: contatos.length + 1,
-        nome: novoContato,
-        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(novoContato)}`,
-      };
-      setContatos([...contatos, novoContatoObj]);
-      setNovoContato('');
-    }
+  const { contacts, addContact, removeContact, editContact } = useMemoryContext();
+  const { conversations, createConversation, addMessage } = useMemoryContext();
+
+
+  const contactSubmit = (e : React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    let contactName : string|undefined = inputNameRef.current?.value;
+    let newId : number = contacts.length+1;
+    let gender : string = 'men';
+
+    if(Methods.isEmpthyText(contactName)) {return}
+
+    if((Math.floor(Math.random() * (0 - 2) + 2)) == 1) {gender = 'women'}
+
+    addContact(new Contact({id: newId, name: contactName!, avatar: `https://randomuser.me/api/portraits/${gender}/${newId}.jpg`}))
+    createConversation(newId);
+
+    inputNameRef.current!.value = '';
+  }
+
+  const handleBuscarContato = () => {
+    return contacts.filter((contact) => contact.name.toLowerCase().includes(busca.toLowerCase()));
   };
 
   const handleEditarContato = (id: number) => {
     const novoNome = prompt('Digite o novo nome do contato:');
-    if (novoNome) {
-      setContatos(
-        contatos.map((contato) =>
-          contato.id === id
-            ? { ...contato, nome: novoNome, avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(novoNome)}` }
-            : contato
-        )
-      );
-    }
+    if (novoNome) {editContact(id,novoNome)}
+
     setMenuAberto(null);
   };
 
-  const handleDeletarContato = (id: number) => {
-    setContatos(contatos.filter((contato) => contato.id !== id));
-    setMenuAberto(null);
-  };
 
-  const handleBuscarContato = () => {
-    return contatos.filter((contato) => contato.nome.toLowerCase().includes(busca.toLowerCase()));
-  };
-
-  const contatosFiltrados = handleBuscarContato();
+  useEffect(() => {
+      if (contactsRef.current) {
+        contactsRef.current!.scrollTop = contactsRef.current!.scrollHeight;
+      }
+  }, [contacts]);
 
   const goToChat = () => {
     navigate('/chat');
   };
+
 
   return (
     <div className="background">
@@ -72,7 +74,7 @@ function Contato(): JSX.Element {
         </div>
 
         <div className="lista">
-          {contatosFiltrados.map((contato) => (
+          {handleBuscarContato().map((contato) => (
             <div key={contato.id} className="contato-item">
               <div className="menu-container">
                 <button
@@ -84,27 +86,28 @@ function Contato(): JSX.Element {
                 {menuAberto === contato.id && (
                   <div className="menu-opcoes-dropdown">
                     <button onClick={() => handleEditarContato(contato.id)}>Editar</button>
-                    <button onClick={() => handleDeletarContato(contato.id)}>Deletar</button>
+                    <button onClick={() => removeContact(contato.id)}>Deletar</button>
                   </div>
                 )}
               </div>
-              <img src={contato.avatar} alt={contato.nome} className="contato-avatar" />
-              <div className="contato-nome">{contato.nome}</div>
+              <img src={contato.avatar} alt={contato.name} className="contato-avatar" />
+              <div className="contato-nome">{contato.name}</div>
             </div>
           ))}
         </div>
 
         <div className="userInputForm">
-          <input
-            type="text"
-            placeholder="Adicionar novo contato"
-            value={novoContato}
-            onChange={(e) => setNovoContato(e.target.value)}
-            className="userInput"
-          />
-          <button onClick={handleAdicionarContato} className="inputMessage">
-            Adicionar
-          </button>
+          <form onSubmit={contactSubmit}>
+            <input
+              ref = {inputNameRef}
+              type="text"
+              placeholder="Adicionar novo contato"
+              className="userInput"
+            />
+            <button className="inputMessage">
+              Adicionar
+            </button>
+          </form>
         </div>
       </div>
     </div>
