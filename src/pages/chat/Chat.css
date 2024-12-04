@@ -10,8 +10,38 @@
 }
 
 .side-bar {
+    position: relative;
     width: 20%;
     background-color: #888888;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.floatingButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+.empthyBox {
+    height: 40px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    background-color: #696969;
+    align-self: center;
 }
 
 .chat-container {
@@ -22,7 +52,6 @@
     font-family: Arial, sans-serif;
     background-color: #696969;
     width: 80%;
-    height: 100vh;
 }
 
 .list {
@@ -31,7 +60,6 @@
     overflow-y: auto;
     background-color: #000000bb;
 }
-
 
 .userInput {
     flex: 1;
@@ -138,7 +166,6 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 
 
 .go-to-grupo:hover {

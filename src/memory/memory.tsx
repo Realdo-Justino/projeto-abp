@@ -9,8 +9,8 @@ type MemoryContactType = {
 };
 
 type MemoryFocusedContact = {
-  id: number;
-  focusOnId: (newId: number) => void;
+  focusedContact: Contact;
+  focusOnContact: (newContact: Contact) => void;
 }
 
 type MemoryConversationsType = {
@@ -26,8 +26,10 @@ type MemoryContextType = MemoryContactType &
 const MemoryContext = createContext<MemoryContextType| undefined>(undefined);
 
 export const MemoryProvider = ({ children }: { children: ReactNode }) => {
+    const firstContact : Contact = new Contact({ id: 1, name: 'João Silva', avatar: 'https://randomuser.me/api/portraits/men/1.jpg' });
+
     const [contacts, setContacts] = useState<Array<Contact>>([
-        new Contact({ id: 1, name: 'João Silva', avatar: 'https://randomuser.me/api/portraits/men/1.jpg' }),
+        firstContact,
         new Contact({ id: 2, name: 'Maria Oliveira', avatar: 'https://randomuser.me/api/portraits/women/1.jpg' }),
         new Contact({ id: 3, name: 'Pedro Souza', avatar: 'https://randomuser.me/api/portraits/men/2.jpg' })
     ]);
@@ -91,16 +93,16 @@ export const MemoryProvider = ({ children }: { children: ReactNode }) => {
     }
 
 
-    const [id, setId] = useState<number>(1);
+    const [focusedContact, setContact] = useState<Contact>(firstContact)
 
-    const focusOnId = (newId: number) => {
-      setId((_) => newId)
+    const focusOnContact = (newContact: Contact) => {
+      setContact((_) => newContact);
     }
 
     return (
       <MemoryContext.Provider value={{
         contacts, addContact, removeContact, editContact,
-        id, focusOnId,
+        focusedContact, focusOnContact,
         conversations, createConversation, addMessage
       }}>
         {children}
