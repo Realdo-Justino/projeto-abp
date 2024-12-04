@@ -22,7 +22,6 @@
 .title {
     display: flex;
     flex-direction: row;
-    height: 10vh;
     background-color: #696969;
     align-self: center;
 }
@@ -35,7 +34,6 @@
     font-family: Arial, sans-serif;
     background-color: #696969;
     width: 80%;
-    height: 100vh;
 }
 
 .list {
