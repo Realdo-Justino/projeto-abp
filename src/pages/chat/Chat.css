@@ -12,6 +12,11 @@
 .side-bar {
     width: 20%;
     background-color: #888888;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 .chat-container {
