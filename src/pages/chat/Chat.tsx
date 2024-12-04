@@ -24,7 +24,6 @@ function Chat() : JSX.Element {
 
         setMessages(prevMessages => [...prevMessages, messageText!]);
         inputMessageRef.current!.value = '';
-        chatRef.current!.scrollTop = chatRef.current!.scrollHeight;
     }
 
     useEffect(() => {

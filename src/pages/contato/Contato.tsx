@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMemoryContext } from '../../memory/memory';
 import './Contato.css';
@@ -10,6 +10,7 @@ function Contato() : JSX.Element {
   const navigate = useNavigate();
 
   const inputNameRef = useRef<HTMLInputElement|null>(null);
+  const contactsRef = useRef<HTMLDivElement|null>(null);
 
   const { contacts, addContact, removeContact } = useMemoryContext();
 
@@ -19,14 +20,22 @@ function Contato() : JSX.Element {
 
     let contactName : string|undefined = inputNameRef.current?.value;
     let newId : number = contacts.length+1;
+    let gender : string = 'men';
 
-    if(Methods.isEmpthyText(contactName)) {
-      return;
-    }
+    if(Methods.isEmpthyText(contactName)) {return}
 
-    addContact(new Contact({id: newId, name: contactName!, avatar: `https://randomuser.me/api/portraits/men/${newId}.jpg`}))
+    if((Math.floor(Math.random() * (0 - 2) + 2)) == 1) {gender = 'women'}
+
+    addContact(new Contact({id: newId, name: contactName!, avatar: `https://randomuser.me/api/portraits/${gender}/${newId}.jpg`}))
+
     inputNameRef.current!.value = '';
   }
+
+  useEffect(() => {
+      if (contactsRef.current) {
+        contactsRef.current!.scrollTop = contactsRef.current!.scrollHeight;
+      }
+  }, [contacts]);
 
   const goToChat = () => {
       navigate('/chat')
@@ -35,7 +44,7 @@ function Contato() : JSX.Element {
 
   return (
     <div className="contatos-container">
-      <div className="lista">
+      <div ref={contactsRef} className="lista">
         {contacts.map((contato) => (ContactItem(contato)))}
       </div>
 
