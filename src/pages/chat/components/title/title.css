@@ -1,0 +1,12 @@
+.titleAvatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.titleName{
+  font-size: 30px;
+  font-weight: bold;
+}

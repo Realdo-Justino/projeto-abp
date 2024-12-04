@@ -19,6 +19,14 @@
     height: 100vh;
 }
 
+.title {
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    background-color: #696969;
+    align-self: center;
+}
+
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -143,7 +151,6 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 
 
 .go-to-grupo:hover {
