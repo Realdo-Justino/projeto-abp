@@ -4,15 +4,16 @@ import { useMemoryContext } from '../../memory/memory';
 import './Contato.css';
 import Methods from '../../const/methods';
 import { Contact } from '../../classes/contact';
-import ContactItem from './components/contact/contactItem';
 
-function Contato() : JSX.Element {
+function Contato(): JSX.Element {
   const navigate = useNavigate();
 
   const inputNameRef = useRef<HTMLInputElement|null>(null);
   const contactsRef = useRef<HTMLDivElement|null>(null);
+  const [busca, setBusca] = useState<string>('');
+  const [menuAberto, setMenuAberto] = useState<number | null>(null);
 
-  const { contacts, addContact, removeContact } = useMemoryContext();
+  const { contacts, addContact, removeContact, editContact } = useMemoryContext();
   const { conversations, createConversation, addMessage } = useMemoryContext();
 
 
@@ -33,6 +34,18 @@ function Contato() : JSX.Element {
     inputNameRef.current!.value = '';
   }
 
+  const handleBuscarContato = () => {
+    return contacts.filter((contact) => contact.name.toLowerCase().includes(busca.toLowerCase()));
+  };
+
+  const handleEditarContato = (id: number) => {
+    const novoNome = prompt('Digite o novo nome do contato:');
+    if (novoNome) {editContact(id,novoNome)}
+
+    setMenuAberto(null);
+  };
+
+
   useEffect(() => {
       if (contactsRef.current) {
         contactsRef.current!.scrollTop = contactsRef.current!.scrollHeight;
@@ -40,35 +53,65 @@ function Contato() : JSX.Element {
   }, [contacts]);
 
   const goToChat = () => {
-      navigate('/chat')
-  }
+    navigate('/chat');
+  };
 
 
   return (
-    <div className="contatos-container">
-      <div ref={contactsRef} className="lista">
-        {contacts.map((contato) => (ContactItem(contato)))}
-      </div>
-
-      <div className="userInputForm">
-        <form id='contactInputForm' onSubmit={contactSubmit}>
-          <input
-            ref = {inputNameRef}
-            type="text"
-            placeholder="Adicionar novo contato"
-            className="userInput"
-          />
-          <button className="inputMessage">
-            Adicionar
+    <div className="background">
+      <div className="contatos-container">
+        <div className="header">
+          <button className="go-back-chat" onClick={goToChat}>
+            Voltar para o Chat
           </button>
-        </form>
-      </div>
+          <input
+            type="text"
+            placeholder="Buscar contato por nome"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            className="busca-input"
+          />
+        </div>
 
-      <button className="go-back-chat" onClick={goToChat}>
-        Voltar para o Chat
-      </button>
+        <div className="lista">
+          {handleBuscarContato().map((contato) => (
+            <div key={contato.id} className="contato-item">
+              <div className="menu-container">
+                <button
+                  className="menu-tres-pontinhos"
+                  onClick={() => setMenuAberto(menuAberto === contato.id ? null : contato.id)}
+                >
+                  ...
+                </button>
+                {menuAberto === contato.id && (
+                  <div className="menu-opcoes-dropdown">
+                    <button onClick={() => handleEditarContato(contato.id)}>Editar</button>
+                    <button onClick={() => removeContact(contato.id)}>Deletar</button>
+                  </div>
+                )}
+              </div>
+              <img src={contato.avatar} alt={contato.name} className="contato-avatar" />
+              <div className="contato-nome">{contato.name}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="userInputForm">
+          <form onSubmit={contactSubmit}>
+            <input
+              ref = {inputNameRef}
+              type="text"
+              placeholder="Adicionar novo contato"
+              className="userInput"
+            />
+            <button className="inputMessage">
+              Adicionar
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Contato;
