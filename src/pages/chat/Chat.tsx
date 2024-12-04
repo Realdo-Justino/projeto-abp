@@ -4,6 +4,7 @@ import Message from './components/message/message';
 import { useNavigate } from 'react-router-dom';
 import { useMemoryContext } from '../../memory/memory';
 import './Chat.css';
+import Conversation from './components/conversation/conversation';
 
 function Chat() : JSX.Element {
     const navigate = useNavigate();
@@ -44,7 +45,7 @@ function Chat() : JSX.Element {
         <div className='container'>
             <div className="side-bar">
                 {contacts.map((currentContact) => (
-                    <label>{currentContact.name}</label>
+                    Conversation(currentContact)
                 ))}
             </div>
             <div className="chat-container">

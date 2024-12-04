@@ -1,0 +1,25 @@
+.conversation {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+  }
+
+  .conversation:hover {
+    background-color: #eaeaea;
+  }
+
+  .contactAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .contactName {
+    font-size: 16px;
+    font-weight: bold;
+  }
