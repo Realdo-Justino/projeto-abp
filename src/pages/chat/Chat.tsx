@@ -61,12 +61,14 @@ function Chat() : JSX.Element {
                     Conversation(currentContact, focusOnContactById)
                 ))}
                 <div className='empthyBox' />
-                <button className='floatingButton floatingButtonRight' onClick={goToContatos}>
-                    <FontAwesomeIcon icon={faUser} />
-                </button>
-                <button className='floatingButton floatingButtonLeft' onClick={goToGrupo}>
-                    <FontAwesomeIcon icon={faUserGroup} />
-                </button>
+                <div className="button-row">
+                    <button className='floating-button' onClick={goToContatos}>
+                        <FontAwesomeIcon icon={faUser} />
+                    </button>
+                    <button className='floating-button' onClick={goToGrupo}>
+                        <FontAwesomeIcon icon={faUserGroup} />
+                    </button>
+                </div>
             </div>
             <div className="chat-container">
                 <div className='title'>

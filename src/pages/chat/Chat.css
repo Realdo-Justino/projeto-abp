@@ -19,9 +19,30 @@
     height: 94vh;
 }
 
-.floatingButton {
-    position: absolute;
-    bottom: 20px;
+.empthyBox {
+    height: 60px;
+}
+
+.side-bar {
+    width: 20%;
+    background-color: #888888;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 94vh;
+    overflow-y: auto;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between; /* Positions buttons at opposite ends */
+    position: sticky;
+    bottom: 5px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.floating-button {
     padding: 15px 20px;
     border-radius: 50%;
     background-color: #007bff;
@@ -32,16 +53,8 @@
     font-size: 20px;
 }
 
-.floatingButtonRight {
-    right: 20px;
-}
-
-.floatingButtonLeft {
-    left: 20px;
-}
-
-.empthyBox {
-    height: 40px;
+.floating-button:hover {
+    background-color: #004da0;
 }
 
 .title {
