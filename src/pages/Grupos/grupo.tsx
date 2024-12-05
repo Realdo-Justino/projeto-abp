@@ -1,21 +1,17 @@
 import { useState } from 'react';
-import { Member } from '../../classes/member';
 import { useNavigate } from 'react-router-dom';
 import './grupo.css';
+import { useMemoryContext } from '../../memory/memory';
+import { Contact } from '../../classes/contact';
 
 function App() {
     const navigate = useNavigate();
     const [groupName, setGroupName] = useState<string>('');
     const [groupDescription, setGroupDescription] = useState<string>('');
     const [groupImage, setGroupImage] = useState<File | null>(null);
-    const [selectedMembers, setSelectedMembers] = useState<Array<Member>>([]);
+    const [selectedMembers, setSelectedMembers] = useState<Array<Contact>>([]);
 
-    const members: Array<Member> = [
-        new Member({ id: 1, name: 'João Silva' }),
-        new Member({ id: 2, name: 'Maria Oliveira' }),
-        new Member({ id: 3, name: 'Pedro Souza' }),
-        new Member({ id: 4, name: 'Cristiano Ronaldo' }),
-    ];
+    const { contacts } = useMemoryContext();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -33,9 +29,24 @@ function App() {
 
     const handleMemberChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selectedId: number = parseInt(e.target.value, 10);
-        const selectedMember = members.find((m) => m.id === selectedId);
-        if (selectedMember && !selectedMembers.some(member => member.id === selectedId)) {
-            setSelectedMembers(prev => [...prev, selectedMember]);
+        let selectedMember : Contact|null = null;
+
+        for(let currentContact of contacts) {
+            if(currentContact.id === selectedId) {
+                selectedMember = currentContact;
+            }
+        }
+
+        if(selectedMember !== null) {
+            setSelectedMembers(prev => {
+                let members : Array<Contact> = [...prev];
+
+                if(!members.includes(selectedMember!)) {
+                    members = [...prev, selectedMember!];
+                }
+
+                return members;
+            });
         }
     };
 
@@ -81,9 +92,9 @@ function App() {
                 <div className="form-group">
                     <label>Membros:</label>
                     <select id="membersSelect" onChange={handleMemberChange}>
-                        {members.map((member) => (
-                            <option key={member.id} value={member.id}>
-                                {member.name}
+                        {contacts.map((currentContact) => (
+                            <option key={currentContact.id} value={currentContact.id}>
+                                {currentContact.name}
                             </option>
                         ))}
                     </select>
