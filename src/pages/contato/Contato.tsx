@@ -14,7 +14,7 @@ function Contato(): JSX.Element {
   const [menuAberto, setMenuAberto] = useState<number | null>(null);
 
   const { contacts, addContact, removeContact, editContact } = useMemoryContext();
-  const { conversations, createConversation, addMessage } = useMemoryContext();
+  const { createConversation } = useMemoryContext();
 
 
   const contactSubmit = (e : React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +26,7 @@ function Contato(): JSX.Element {
 
     if(Methods.isEmpthyText(contactName)) {return}
 
-    if((Math.floor(Math.random() * (0 - 2) + 2)) == 1) {gender = 'women'}
+    if((Math.floor(Math.random() * (0 - 2) + 2)) === 1) {gender = 'women'}
 
     addContact(new Contact({id: newId, name: contactName!, avatar: `https://randomuser.me/api/portraits/${gender}/${newId}.jpg`}))
     createConversation(newId);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Methods from '../../const/methods';
 import Message from './components/message/message';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import './Chat.css';
 import Conversation from './components/conversation/conversation';
 import ContactTitle from './components/title/title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 
 function Chat() : JSX.Element {
     const navigate = useNavigate();
@@ -38,7 +38,7 @@ function Chat() : JSX.Element {
 
     const focusOnContactById = (e: React.MouseEvent<HTMLDivElement>, contactId: number) => {
         for(let currentContact of contacts) {
-           if(currentContact.id == contactId)  {
+           if(currentContact.id === contactId)  {
                 focusOnContact(currentContact)
            }
         }
@@ -52,6 +52,7 @@ function Chat() : JSX.Element {
         navigate('/grupo');
     }
 
+
     return (
         <div className='container'>
             <div className="side-bar">
@@ -60,8 +61,11 @@ function Chat() : JSX.Element {
                     Conversation(currentContact, focusOnContactById)
                 ))}
                 <div className='empthyBox' />
-                <button className='floatingButton' onClick={goToContatos}>
-                    <FontAwesomeIcon icon={faPlus} />
+                <button className='floatingButton floatingButtonRight' onClick={goToContatos}>
+                    <FontAwesomeIcon icon={faUser} />
+                </button>
+                <button className='floatingButton floatingButtonLeft' onClick={goToGrupo}>
+                    <FontAwesomeIcon icon={faUserGroup} />
                 </button>
             </div>
             <div className="chat-container">
@@ -81,10 +85,6 @@ function Chat() : JSX.Element {
                         />
                     <button className="inputMessage" type="submit">Enviar</button>
                 </form>
-
-                <button className="go-to-grupo" onClick={goToGrupo}>
-                    Criar Grupo
-                </button>
             </div>
         </div>
     );
