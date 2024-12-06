@@ -1,6 +1,6 @@
 @media (max-width: 980px) {
-    .container {
-        padding: 15px;
+    .container{
+    display: flex;
     }
 
     button[type="submit"] {
@@ -16,18 +16,19 @@ input[type="file"] {
 
 
 .body-page {
-    background: #888888;
-    padding: 20px 30px;
+    align-items: center ;
+    background: #ffffff;
+    padding: 10px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    height: 100vh;
-    max-width: 900px;
+    
+    height: 100%;
+    max-width: 96%;
 }
 
 .body-page h1 {
     text-align: center;
-    color: #ffffff;
+    color: #000000;
     margin-bottom: 20px;
 }
 
@@ -36,10 +37,10 @@ input[type="file"] {
 }
 
 .form-group label {
-    display: block;
+    display: flex;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #eeeeee;
+    color: #000000;
 }
 
 .form-group input, .form-group textarea, .form-group select {
@@ -48,8 +49,9 @@ input[type="file"] {
     border: 1px solid #181818;
     border-radius: 4px;
     font-size: 14px;
-    background-color: #b8b8b8;
+    background-color: #80b7d6;
     color: #000000;
+    cursor: pointer;
 }
 
 .form-group textarea {
@@ -65,10 +67,10 @@ input[type="file"] {
 }
 
 .button {
-    background-color: #0714c0c4;
+    background-color: #007bff;
     color: #ffffff;
     padding: 10px 15px;
-    border: none;
+    border: 2px black soli;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
@@ -86,10 +88,20 @@ input[type="file"] {
 .back-chat {
     width: 150px;
     height: max-content;
-    border: #000000 5px;
+    border: 1px #000000  soli;
     text-align: center;
     position: relative;
     left: px;
-    top: 382px;
-    margin: 0 auto;
+    top: 5px;
+    margin: 14px ;
+    padding: 5px ;
+}
+
+
+
+.back-chat:hover {
+    background-color: #000000;
+}
+button:hover {
+    background-color: #000000;
 }

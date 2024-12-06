@@ -43,7 +43,9 @@ function App() {
         navigate('/chat');
     };
 
+    
     return (
+        
         <div className="body-page">
             <h1>Criar Grupo</h1>
             <form onSubmit={handleSubmit}>
@@ -92,7 +94,7 @@ function App() {
                 <button type="submit" className="button group-button">Criar Grupo</button>
             </form>
 
-            <button className="button back-chat" onClick={handleBackToChat}>Voltar para Chat</button>
+            <button className="button back-chat" onClick={handleBackToChat}>Voltar para o Chat</button>
         </div>
     );
 }
