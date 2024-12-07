@@ -41,8 +41,9 @@
 }
 
 .busca-input {
-  width: 70%;
-  padding: 10px;
+  width: 75%;
+  align-items: center;
+  padding: 10px 20px;;
   border-radius: 5px;
   border: 2px solid black;
   font-size: 14px;
@@ -52,10 +53,9 @@
 .lista {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 20px;
-  padding: 15px;
+  gap: 28px;
+  padding: 10px;
   overflow-y: auto;
-  flex: 1;
   margin-bottom: 60px;
 }
 
@@ -120,17 +120,22 @@
   font-weight: bold;
 }
 
-
 .userInputForm {
-  position: absolute;
-  bottom: 5px;
-  left: 5%;
-  width: 90%;
   display: flex;
-  gap: 10px;
-  padding: 10px;
+  align-items: center;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: white;
   border-top: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  width: 100%;
 }
 
 .userInput {
@@ -138,15 +143,22 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 14px;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .inputMessage {
   padding: 10px 20px;
-  border: none;
   background-color: #007bff;
   color: white;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
+  height: 40px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
 .inputMessage:hover {
